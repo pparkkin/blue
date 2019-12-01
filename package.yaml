@@ -1,0 +1,40 @@
+name:                blue
+version:             0.1.0.0
+author:              "Paavo Parkkinen"
+maintainer:          "pparkkin@gmail.com"
+
+extra-source-files:
+- README.md
+
+description:         Simple websocket chat server
+
+dependencies:
+- base >= 4.7 && < 5
+- guid
+- text
+- websockets
+
+library:
+  source-dirs: src
+
+executables:
+  blue-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - blue
+
+tests:
+  blue-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - blue
